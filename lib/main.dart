@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +20,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) {
+    formatted = DateFormat(' E -dd-LLL-yyyy – kk:mm').format(date);
+    var timeInDays = date.difference(DateTime(1970)).inDays;
+    var timeInYears = (timeInDays / 365).floor();
+    this.todayText =
+        ' Today is  ${formatted} \n Which is ${date.millisecondsSinceEpoch}s \n  since 1970 epoch.\n\n Time: ${timeInDays}days or ${timeInYears}years';
+  }
+  DateTime date = DateTime.now();
+  String formatted = '';
+  String todayText = '';
   final String title;
 
   @override
@@ -42,17 +52,24 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'What\'s so special about today?',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'What\'s so special about today?',
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(widget.todayText),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
