@@ -21,16 +21,19 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) {
+    updateDateString();
+  }
+  DateTime date = DateTime.now();
+  String formatted = '';
+  String todayText = '';
+  final String title;
+  void updateDateString() {
     formatted = DateFormat(' E -dd-LLL-yyyy – kk:mm').format(date);
     var timeInDays = date.difference(DateTime(1970)).inDays;
     var timeInYears = (timeInDays / 365).floor();
     this.todayText =
         ' Today is  ${formatted} \n Which is ${date.millisecondsSinceEpoch}s \n  since 1970 epoch.\n\n Time: ${timeInDays}days or ${timeInYears}years';
   }
-  DateTime date = DateTime.now();
-  String formatted = '';
-  String todayText = '';
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -38,7 +41,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -78,14 +80,15 @@ class _MyHomePageState extends State<MyHomePage> {
               context: context,
               initialDate: widget.date,
               firstDate: DateTime(1800),
-              lastDate: widget.date,
+              lastDate: DateTime(2100),
             );
 
             if (newDate == null)
               return;
             else
               setState(() {
-                //
+                widget.date = newDate;
+                widget.updateDateString();
               });
           },
           tooltip: 'Increment',
