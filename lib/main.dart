@@ -28,11 +28,12 @@ class MyHomePage extends StatefulWidget {
   String todayText = '';
   final String title;
   void updateDateString() {
-    formatted = DateFormat(' E -dd-LLL-yyyy – kk:mm').format(date);
-    var timeInDays = date.difference(DateTime(1970)).inDays;
-    var timeInYears = (timeInDays / 365).floor();
+    formatted = DateFormat(' E -dd-LLL-yyyy').format(date);
+    int difference = date.difference(DateTime(1970)).inDays;
+    var timeInYears = (difference / 365).floor();
+    var timeInDays = difference % 365;
     this.todayText =
-        ' Today is  ${formatted} \n Which is ${date.millisecondsSinceEpoch}s \n  since 1970 epoch.\n\n Time: ${timeInDays}days or ${timeInYears}years';
+        ' Today is  ${formatted} \n \n Time: ${timeInYears}years, ${timeInDays}days (${date.millisecondsSinceEpoch} seconds) \n  since 1970 epoch.\n\n  ';
   }
 
   @override
@@ -61,11 +62,22 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text(
                 'What\'s so special about today?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
               SizedBox(
                 height: 10,
               ),
-              Text(widget.todayText),
+              Text(
+                widget.todayText,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+              ),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,
