@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,6 +43,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  TextStyle animationTextStyle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
+  );
+  static const colorizeColors = [
+    Colors.lightBlueAccent,
+    Colors.purple,
+    Colors.blue,
+    Colors.yellow,
+    Colors.red,
+    Colors.orangeAccent
+  ];
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -60,12 +73,47 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'What\'s so special about today?',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'What\'s so special about ',
+                    style: animationTextStyle,
+                  ),
+                  AnimatedTextKit(
+                    animatedTexts: [
+                      FadeAnimatedText(
+                        'today?',
+                        textStyle: animationTextStyle,
+                      ),
+                      TypewriterAnimatedText(
+                        'Design?',
+                        textStyle: animationTextStyle,
+                      ),
+                      ColorizeAnimatedText(
+                        'your memories!',
+                        textStyle: animationTextStyle,
+                        colors: colorizeColors,
+                      ),
+                      TyperAnimatedText(
+                        'this day?',
+                        textStyle: animationTextStyle,
+                      ),
+                      ScaleAnimatedText(
+                        'Anticipate',
+                        textStyle: animationTextStyle,
+                      ),
+                      FlickerAnimatedText(
+                        'the moment!',
+                        textStyle: animationTextStyle,
+                      ),
+                    ],
+                    // totalRepeatCount: 15,
+                    repeatForever: true,
+                    onTap: () {
+                      print("Tap Event");
+                    },
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
