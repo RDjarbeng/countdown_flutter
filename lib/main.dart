@@ -79,39 +79,42 @@ class _MyHomePageState extends State<MyHomePage> {
                     'What\'s so special about ',
                     style: animationTextStyle,
                   ),
-                  AnimatedTextKit(
-                    animatedTexts: [
-                      FadeAnimatedText(
-                        'today?',
-                        textStyle: animationTextStyle,
-                      ),
-                      TypewriterAnimatedText(
-                        'Design?',
-                        textStyle: animationTextStyle,
-                      ),
-                      ColorizeAnimatedText(
-                        'your memories!',
-                        textStyle: animationTextStyle,
-                        colors: colorizeColors,
-                      ),
-                      TyperAnimatedText(
-                        'this day?',
-                        textStyle: animationTextStyle,
-                      ),
-                      ScaleAnimatedText(
-                        'Anticipate',
-                        textStyle: animationTextStyle,
-                      ),
-                      FlickerAnimatedText(
-                        'the moment!',
-                        textStyle: animationTextStyle,
-                      ),
-                    ],
-                    // totalRepeatCount: 15,
-                    repeatForever: true,
-                    onTap: () {
-                      print("Tap Event");
-                    },
+                  SizedBox(
+                    height: 40,
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        FadeAnimatedText(
+                          'today?',
+                          textStyle: animationTextStyle,
+                        ),
+                        TypewriterAnimatedText(
+                          'Design?',
+                          textStyle: animationTextStyle,
+                        ),
+                        ColorizeAnimatedText(
+                          'your memories!',
+                          textStyle: animationTextStyle,
+                          colors: colorizeColors,
+                        ),
+                        TyperAnimatedText(
+                          'this day?',
+                          textStyle: animationTextStyle,
+                        ),
+                        ScaleAnimatedText(
+                          'Anticipate',
+                          textStyle: animationTextStyle,
+                        ),
+                        FlickerAnimatedText(
+                          'the moment!',
+                          textStyle: animationTextStyle,
+                        ),
+                      ],
+                      // totalRepeatCount: 15,
+                      repeatForever: true,
+                      onTap: () {
+                        print("Tap Event");
+                      },
+                    ),
                   ),
                 ],
               ),
