@@ -87,10 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           'today?',
                           textStyle: animationTextStyle,
                         ),
-                        TypewriterAnimatedText(
-                          'Design?',
-                          textStyle: animationTextStyle,
-                        ),
+                        TypewriterAnimatedText('Design?',
+                            textStyle: animationTextStyle,
+                            speed: Duration(milliseconds: 80)),
                         ColorizeAnimatedText(
                           'your memories!',
                           textStyle: animationTextStyle,
