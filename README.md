@@ -1,7 +1,12 @@
 # countdown_flutter
 
 A notable dates/memory Flutter project to keep track of special days.
+todo:
+Add date time picker
+Let date variable state to update with date time picker
+Update UI
 
+Add firebase
 ## Getting Started
 
 This project is a starting point for a Flutter application.
