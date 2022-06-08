@@ -5,8 +5,9 @@ todo:
 Add date time picker
 Let date variable state to update with date time picker
 Update UI
+Add text field
 
-Add firebase
+Connect to firebase
 ## Getting Started
 
 This project is a starting point for a Flutter application.
